@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   # s.signing_key            = File.expand_path(pvt_key) if $PROGRAM_NAME =~ /gem\z/
   s.summary                = 'Sensu plugins for gearman'
   s.test_files             = s.files.grep(%r{^(test|spec|features)/})
-  s.version                = SensuPluginsBeanstalk::Version::VER_STRING
+  s.version                = SensuPluginsGearman::Version::VER_STRING
 
   s.add_runtime_dependency 'sensu-plugin', '~> 1.2'
   s.add_runtime_dependency 'gearman-ruby', '4.0.5'
