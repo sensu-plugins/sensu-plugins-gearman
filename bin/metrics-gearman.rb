@@ -65,7 +65,7 @@ class GearmanMetrics < Sensu::Plugin::Metric::CLI::Graphite
       if stat.nil?
         warning "Queue #{config[:queue]} not found"
       else
-        stats = {config[:queue] => stat}
+        stats = { config[:queue] => stat }
       end
     else
       stats = gearman.status

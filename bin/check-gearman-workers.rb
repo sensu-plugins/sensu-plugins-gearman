@@ -78,14 +78,14 @@ class CheckGearmanWorkers < Sensu::Plugin::Check::CLI
       if stat.nil?
         warning "Queue #{config[:queue]} not found"
       else
-        stats = {config[:queue] => stat}
+        stats = { config[:queue] => stat }
       end
     else
       stats = gearman.status
     end
 
-    stats.each do |queue_name, stat|
-      workers = stat[:workers].to_i
+    stats.each do |queue_name, single_stat|
+      workers = single_stat[:workers].to_i
       if config[:crit_high] && workers > config[:crit_high]
         criticals << "#{queue_name}: High threshold is #{config[:crit_high]} workers (#{workers} active workers)"
       elsif config[:warn_high] && workers > config[:warn_high]
@@ -99,14 +99,12 @@ class CheckGearmanWorkers < Sensu::Plugin::Check::CLI
       end
     end
 
-    if criticals.length > 0
-      critical criticals.join(" ")
+    unless criticals.empty?
+      critical criticals.join(' ')
     end
-    if warnings.length > 0
-      warning warnings.join(" ")
+    unless warnings.empty?
+      warning warnings.join(' ')
     end
-    if okays.length > 0
-      ok okays.join(" ")
-    end
+    ok okays.join(' ')
   end
 end
