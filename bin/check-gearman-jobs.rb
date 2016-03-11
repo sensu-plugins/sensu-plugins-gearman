@@ -91,7 +91,7 @@ class CheckGearmanWorkers < Sensu::Plugin::Check::CLI
       elsif config[:warn_high] && jobs > config[:warn_high]
         warnings << "#{queue_name}: High threshold is #{config[:warn_high]} jobs (#{jobs} active jobs)"
       elsif jobs < config[:crit_low]
-        warnings << "#{queue_name}: Low threshold is #{config[:crit_low]} jobs (#{jobs} active jobs)"
+        criticals << "#{queue_name}: Low threshold is #{config[:crit_low]} jobs (#{jobs} active jobs)"
       elsif jobs < config[:warn_low]
         warnings << "#{queue_name}: Low threshold is #{config[:warn_low]} (#{jobs} active jobs)"
       else
