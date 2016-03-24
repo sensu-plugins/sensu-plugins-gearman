@@ -1,4 +1,4 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in sensu-plugins-beanstalk.gemspec
+# Specify your gem's dependencies in sensu-plugins-gearman.gemspec
 gemspec
