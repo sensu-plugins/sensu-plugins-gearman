@@ -72,6 +72,7 @@ class GearmanMetrics < Sensu::Plugin::Metric::CLI::Graphite
     end
 
     stats.each do |key, counts|
+      key=key.gsub(/\s+/, "_")
       counts.each do |count_key, count_value|
         output "#{config[:scheme]}.#{key}.#{count_key}", count_value
       end
